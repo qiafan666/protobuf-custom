@@ -125,6 +125,15 @@ func genConsulRpc(f *protogen.File, g *protogen.GeneratedFile) {
 		g.P(fmt.Sprintf("var %s = &%s{}", serviceName, structName))
 		g.P(fmt.Sprintf("type %s struct {}", structName))
 
+		//去除proto文件的.proto后缀和/之前的所有字符
+		var protoName string
+		if strings.HasSuffix(f.Proto.GetName(), ".proto") {
+			protoName = f.Proto.GetName()[:len(f.Proto.GetName())-6]
+		}
+		if strings.LastIndex(protoName, "/") > 0 {
+			protoName = protoName[strings.Index(protoName, "/")+1:]
+		}
+
 		// 生成客户端方法
 		for _, method := range service.Methods {
 			methodName := method.GoName
@@ -145,7 +154,7 @@ func (c *%s) %s(destination %s.Destination, request *%s, opts ...%s.Option) (res
 	response = new(%s)
 	err = %s.Unmarshal(resPBData, response)
 	return
-}`, methodName, structName, methodName, SRPC, reqType, SRPC, resType, PB, SRPC, f.GeneratedFilenamePrefix, serviceName, methodName, resType, PB))
+}`, methodName, structName, methodName, SRPC, reqType, SRPC, resType, PB, SRPC, protoName, serviceName, methodName, resType, PB))
 		}
 
 		// 生成服务接口头
