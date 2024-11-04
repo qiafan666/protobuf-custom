@@ -24,15 +24,12 @@
 package main
 
 import (
-	"bytes"
 	"flag"
 	"fmt"
-	"strings"
-	"unicode"
-
 	"github.com/golang/protobuf/internal/gengogrpc"
 	gengo "google.golang.org/protobuf/cmd/protoc-gen-go/internal_gengo"
 	"google.golang.org/protobuf/compiler/protogen"
+	"strings"
 )
 
 func main() {
@@ -171,18 +168,6 @@ type %s interface {`, serviceName, serviceName, serviceName+"Server"))
 		//生成服务接口屁股
 		g.P(`}`)
 
-		// 驼峰转下划线
-		CamelToSnake := func(s string) string {
-			var buf bytes.Buffer
-			for i, r := range s {
-				if i > 0 && unicode.IsUpper(r) {
-					buf.WriteByte('_')
-				}
-				buf.WriteRune(unicode.ToLower(r))
-			}
-			return buf.String()
-		}
-
 		// 生成服务实现
 		g.P(fmt.Sprintf(`
 type %sService struct {
@@ -192,7 +177,7 @@ type %sService struct {
 // Reg%sServer 注册%s服务
 func Reg%sServer(handle %sServer) {
 	%s.ServiceDispatchObject.AddService("%s", "%s", &%sService{handle: handle})
-}`, serviceName, serviceName, serviceName, serviceName, serviceName, serviceName, PB, CamelToSnake(serviceName), serviceName, serviceName))
+}`, serviceName, serviceName, serviceName, serviceName, serviceName, serviceName, PB, protoName, serviceName, serviceName))
 
 		// 生成Do方法
 		g.P(fmt.Sprintf(`
