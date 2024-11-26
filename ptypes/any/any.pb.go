@@ -4,9 +4,9 @@
 package any
 
 import (
-	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
-	protoimpl "google.golang.org/protobuf/runtime/protoimpl"
-	anypb "google.golang.org/protobuf/types/known/anypb"
+	protoreflect "github.com/golang/protobuf/protobuf/reflect/protoreflect"
+	protoimpl "github.com/golang/protobuf/protobuf/runtime/protoimpl"
+	anypb "github.com/golang/protobuf/protobuf/types/known/anypb"
 	reflect "reflect"
 )
 

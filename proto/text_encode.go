@@ -13,11 +13,11 @@ import (
 	"sort"
 	"strings"
 
-	"google.golang.org/protobuf/encoding/prototext"
-	"google.golang.org/protobuf/encoding/protowire"
-	"google.golang.org/protobuf/proto"
-	"google.golang.org/protobuf/reflect/protoreflect"
-	"google.golang.org/protobuf/reflect/protoregistry"
+	"github.com/golang/protobuf/protobuf/encoding/prototext"
+	"github.com/golang/protobuf/protobuf/encoding/protowire"
+	"github.com/golang/protobuf/protobuf/proto"
+	"github.com/golang/protobuf/protobuf/reflect/protoreflect"
+	"github.com/golang/protobuf/protobuf/reflect/protoregistry"
 )
 
 const wrapTextMarshalV2 = false

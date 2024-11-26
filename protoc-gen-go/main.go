@@ -27,8 +27,8 @@ import (
 	"flag"
 	"fmt"
 	"github.com/golang/protobuf/internal/gengogrpc"
-	gengo "google.golang.org/protobuf/cmd/protoc-gen-go/internal_gengo"
-	"google.golang.org/protobuf/compiler/protogen"
+	gengo "github.com/golang/protobuf/protobuf/cmd/protoc-gen-go/internal_gengo"
+	"github.com/golang/protobuf/protobuf/compiler/protogen"
 	"strings"
 )
 
@@ -218,3 +218,53 @@ func (s *%sService) %s(function string, reqPBData []byte) (resPBData []byte, err
 		}
 	}
 }
+
+//如何对json和bson的tag名称进行修改
+/*
+1、将google.golang.org/protobuf的包下载到本地，删除其中的go.mod文件
+2、["google.golang.org/protobuf] 替换为 ["github.com/golang/protobuf/protobuf]
+3、将导入的包路径改为之前的"google.golang.org/protobuf  位置在protobuf/cmd/protoc-gen-go/internal_gengo 影响生成的pb.go文件导入路径
+4、以下代码粘贴到protoc-gen-go/internal_gengo/main.go 411行，修改json和bson的tag名称
+
+	jsonUnderscoreName := func(name string) string {
+		// 使用 strings.Builder 代替自定义的 NewBuffer
+		var buffer strings.Builder
+		for i, r := range name {
+			if unicode.IsUpper(r) {
+				if i != 0 {
+					buffer.WriteRune('_') // 使用 WriteRune 追加下划线字符
+				}
+				buffer.WriteRune(unicode.ToLower(r)) // 将大写字母转为小写
+			} else {
+				buffer.WriteRune(r) // 保持非大写字母原样追加
+			}
+		}
+
+		return buffer.String()
+	}
+
+	bsonUnderscoreName := func(name string) string {
+		if strings.ToLower(name) == "id" {
+			return "_id"
+		}
+
+		var buffer strings.Builder
+		for i, r := range name {
+			if unicode.IsUpper(r) {
+				if i != 0 {
+					buffer.WriteRune('_') // 使用 WriteRune 追加下划线字符
+				}
+				buffer.WriteRune(unicode.ToLower(r)) // 将大写字母转为小写
+			} else {
+				buffer.WriteRune(r) // 保持非大写字母原样追加
+			}
+		}
+
+		return buffer.String()
+	}
+
+tags := structTags{
+{"protobuf", fieldProtobufTagValue(field)},
+{"json", jsonUnderscoreName(string(field.Desc.Name())) + ",omitempty"},
+{"bson", bsonUnderscoreName(string(field.Desc.Name()))},
+}*/

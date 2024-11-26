@@ -4,9 +4,9 @@
 package plugin_go
 
 import (
-	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
-	protoimpl "google.golang.org/protobuf/runtime/protoimpl"
-	pluginpb "google.golang.org/protobuf/types/pluginpb"
+	protoreflect "github.com/golang/protobuf/protobuf/reflect/protoreflect"
+	protoimpl "github.com/golang/protobuf/protobuf/runtime/protoimpl"
+	pluginpb "github.com/golang/protobuf/protobuf/types/pluginpb"
 	reflect "reflect"
 )
 

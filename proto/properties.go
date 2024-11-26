@@ -11,8 +11,8 @@ import (
 	"strings"
 	"sync"
 
-	"google.golang.org/protobuf/reflect/protoreflect"
-	"google.golang.org/protobuf/runtime/protoimpl"
+	"github.com/golang/protobuf/protobuf/reflect/protoreflect"
+	"github.com/golang/protobuf/protobuf/runtime/protoimpl"
 )
 
 // StructProperties represents protocol buffer type information for a

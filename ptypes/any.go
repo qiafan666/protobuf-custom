@@ -9,8 +9,8 @@ import (
 	"strings"
 
 	"github.com/golang/protobuf/proto"
-	"google.golang.org/protobuf/reflect/protoreflect"
-	"google.golang.org/protobuf/reflect/protoregistry"
+	"github.com/golang/protobuf/protobuf/reflect/protoreflect"
+	"github.com/golang/protobuf/protobuf/reflect/protoregistry"
 
 	anypb "github.com/golang/protobuf/ptypes/any"
 )

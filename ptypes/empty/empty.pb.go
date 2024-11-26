@@ -4,9 +4,9 @@
 package empty
 
 import (
-	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
-	protoimpl "google.golang.org/protobuf/runtime/protoimpl"
-	emptypb "google.golang.org/protobuf/types/known/emptypb"
+	protoreflect "github.com/golang/protobuf/protobuf/reflect/protoreflect"
+	protoimpl "github.com/golang/protobuf/protobuf/runtime/protoimpl"
+	emptypb "github.com/golang/protobuf/protobuf/types/known/emptypb"
 	reflect "reflect"
 )
 

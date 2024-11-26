@@ -5,8 +5,8 @@
 package proto
 
 import (
-	protoV2 "google.golang.org/protobuf/proto"
-	"google.golang.org/protobuf/runtime/protoiface"
+	protoV2 "github.com/golang/protobuf/protobuf/proto"
+	"github.com/golang/protobuf/protobuf/runtime/protoiface"
 )
 
 // Size returns the size in bytes of the wire-format encoding of m.

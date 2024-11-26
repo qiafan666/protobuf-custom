@@ -20,7 +20,7 @@ import (
 	"time"
 
 	"github.com/golang/protobuf/proto"
-	"google.golang.org/protobuf/testing/protopack"
+	"github.com/golang/protobuf/protobuf/testing/protopack"
 
 	pb2 "github.com/golang/protobuf/internal/testprotos/proto2_proto"
 	pb3 "github.com/golang/protobuf/internal/testprotos/proto3_proto"

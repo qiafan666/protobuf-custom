@@ -5,7 +5,7 @@
 package proto
 
 import (
-	"google.golang.org/protobuf/reflect/protoreflect"
+	"github.com/golang/protobuf/protobuf/reflect/protoreflect"
 )
 
 // SetDefaults sets unpopulated scalar fields to their default values.

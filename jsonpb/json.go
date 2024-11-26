@@ -9,15 +9,15 @@
 // Do not rely on the default behavior of the standard encoding/json package
 // when called on generated message types as it does not operate correctly.
 //
-// Deprecated: Use the "google.golang.org/protobuf/encoding/protojson"
+// Deprecated: Use the "github.com/golang/protobuf/protobuf/encoding/protojson"
 // package instead.
 package jsonpb
 
 import (
 	"github.com/golang/protobuf/proto"
-	"google.golang.org/protobuf/reflect/protoreflect"
-	"google.golang.org/protobuf/reflect/protoregistry"
-	"google.golang.org/protobuf/runtime/protoimpl"
+	"github.com/golang/protobuf/protobuf/reflect/protoreflect"
+	"github.com/golang/protobuf/protobuf/reflect/protoregistry"
+	"github.com/golang/protobuf/protobuf/runtime/protoimpl"
 )
 
 // AnyResolver takes a type URL, present in an Any message,

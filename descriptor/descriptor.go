@@ -5,7 +5,7 @@
 // Package descriptor provides functions for obtaining the protocol buffer
 // descriptors of generated Go types.
 //
-// Deprecated: See the "google.golang.org/protobuf/reflect/protoreflect" package
+// Deprecated: See the "github.com/golang/protobuf/protobuf/reflect/protoreflect" package
 // for how to obtain an EnumDescriptor or MessageDescriptor in order to
 // programatically interact with the protobuf type system.
 package descriptor
@@ -17,9 +17,9 @@ import (
 	"sync"
 
 	"github.com/golang/protobuf/proto"
-	"google.golang.org/protobuf/reflect/protodesc"
-	"google.golang.org/protobuf/reflect/protoreflect"
-	"google.golang.org/protobuf/runtime/protoimpl"
+	"github.com/golang/protobuf/protobuf/reflect/protodesc"
+	"github.com/golang/protobuf/protobuf/reflect/protoreflect"
+	"github.com/golang/protobuf/protobuf/runtime/protoimpl"
 
 	descriptorpb "github.com/golang/protobuf/protoc-gen-go/descriptor"
 )
@@ -41,7 +41,7 @@ type Message interface {
 // Deprecated: Not all concrete message types satisfy the Message interface.
 // Use MessageDescriptorProto instead. If possible, the calling code should
 // be rewritten to use protobuf reflection instead.
-// See package "google.golang.org/protobuf/reflect/protoreflect" for details.
+// See package "github.com/golang/protobuf/protobuf/reflect/protoreflect" for details.
 func ForMessage(m Message) (*descriptorpb.FileDescriptorProto, *descriptorpb.DescriptorProto) {
 	return MessageDescriptorProto(m)
 }

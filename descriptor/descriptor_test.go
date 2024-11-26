@@ -7,8 +7,8 @@ package descriptor
 import (
 	"testing"
 
+	"github.com/golang/protobuf/protobuf/reflect/protoreflect"
 	"github.com/google/go-cmp/cmp"
-	"google.golang.org/protobuf/reflect/protoreflect"
 
 	descpb "github.com/golang/protobuf/protoc-gen-go/descriptor"
 )

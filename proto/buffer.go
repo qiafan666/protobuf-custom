@@ -8,9 +8,9 @@ import (
 	"errors"
 	"fmt"
 
-	"google.golang.org/protobuf/encoding/prototext"
-	"google.golang.org/protobuf/encoding/protowire"
-	"google.golang.org/protobuf/runtime/protoimpl"
+	"github.com/golang/protobuf/protobuf/encoding/prototext"
+	"github.com/golang/protobuf/protobuf/encoding/protowire"
+	"github.com/golang/protobuf/protobuf/runtime/protoimpl"
 )
 
 const (

@@ -4,9 +4,9 @@
 package structpb
 
 import (
-	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
-	protoimpl "google.golang.org/protobuf/runtime/protoimpl"
-	structpb "google.golang.org/protobuf/types/known/structpb"
+	protoreflect "github.com/golang/protobuf/protobuf/reflect/protoreflect"
+	protoimpl "github.com/golang/protobuf/protobuf/runtime/protoimpl"
+	structpb "github.com/golang/protobuf/protobuf/types/known/structpb"
 	reflect "reflect"
 )
 
