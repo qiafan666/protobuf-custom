@@ -91,10 +91,10 @@ func main() {
 }
 
 const (
-	SRPC     = "srpc"
-	SRPCPATH = "meta/pkg/srpc"
+	SRPC     = "kite"
+	SRPCPATH = "meta/pkg/kite"
 	PB       = "pb"
-	PBPATH   = "meta/pkg/srpc/pb"
+	PBPATH   = "meta/pkg/kite/pb"
 )
 
 func genConsulRpc(f *protogen.File, g *protogen.GeneratedFile) {
