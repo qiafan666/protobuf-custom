@@ -408,22 +408,22 @@ func genMessageField(g *protogen.GeneratedFile, f *fileInfo, m *messageInfo, fie
 		goType = "*" + goType
 	}
 
-	jsonUnderscoreName := func(name string) string {
-		// 使用 strings.Builder 代替自定义的 NewBuffer
-		var buffer strings.Builder
-		for i, r := range name {
-			if unicode.IsUpper(r) {
-				if i != 0 {
-					buffer.WriteRune('_') // 使用 WriteRune 追加下划线字符
-				}
-				buffer.WriteRune(unicode.ToLower(r)) // 将大写字母转为小写
-			} else {
-				buffer.WriteRune(r) // 保持非大写字母原样追加
-			}
-		}
-
-		return buffer.String()
-	}
+	//jsonUnderscoreName := func(name string) string {
+	//	// 使用 strings.Builder 代替自定义的 NewBuffer
+	//	var buffer strings.Builder
+	//	for i, r := range name {
+	//		if unicode.IsUpper(r) {
+	//			if i != 0 {
+	//				buffer.WriteRune('_') // 使用 WriteRune 追加下划线字符
+	//			}
+	//			buffer.WriteRune(unicode.ToLower(r)) // 将大写字母转为小写
+	//		} else {
+	//			buffer.WriteRune(r) // 保持非大写字母原样追加
+	//		}
+	//	}
+	//
+	//	return buffer.String()
+	//}
 	bsonUnderscoreName := func(name string) string {
 		if strings.ToLower(name) == "id" {
 			return "_id"
@@ -446,7 +446,8 @@ func genMessageField(g *protogen.GeneratedFile, f *fileInfo, m *messageInfo, fie
 
 	tags := structTags{
 		{"protobuf", fieldProtobufTagValue(field)},
-		{"json", jsonUnderscoreName(string(field.Desc.Name())) + ",omitempty"},
+		{"json", fieldJSONTagValue(field)},
+		//{"json", jsonUnderscoreName(string(field.Desc.Name())) + ",omitempty"},
 		{"bson", bsonUnderscoreName(string(field.Desc.Name()))},
 	}
 	if field.Desc.IsMap() {
